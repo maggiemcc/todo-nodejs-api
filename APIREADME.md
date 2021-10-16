@@ -1,4 +1,5 @@
-# todo-nodejs-api
+# TODOS
+* [Import statements](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
 
 ## 1- GET TODOS:
     - Getting and displaying every todo item in the original allTodos object array.
@@ -13,6 +14,8 @@
     - Looks for given task name and then deletes that task
 
 
+# CATEGORIES
+* [Import statements](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
 ## 5- GET ALL TODOS BY CATEGORY:
     - Gets and displays only todos assigned to a specific category.
 
