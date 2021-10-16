@@ -19,16 +19,17 @@ router.get("/", (req, res) => {
   res.status(200).json(allCategories);
 });
 
-// Get - get tasks by ID (working)
+// Get - get tasks by name (working)
 router.get("/:taskCat", (req, res) => {
-  let findTask = allCategories.find((item) => {
-    return item.id === parseInt(req.params.taskCat);
+  const { taskCat } = req.params;
+  const findTask = allCategories.filter((item) => {
+    return item.category === taskCat;
   });
-
   if (findTask) {
     res.status(200).json(findTask);
-  } else {
-    res.status(404).json("Category does not exist");
+  }
+  if (!findTask) {
+    res.status(404).json("No category/task found.");
   }
 });
 
@@ -51,37 +52,39 @@ router.post("/", (req, res) => {
 });
 
 // GET - specific categories (working)
-router.get("/:catId", (req, res) => {
-  const { catId } = req.params;
-  const findTask = allCategories.filter((item) => {
-    return item.category === catId;
-  });
-  if (findTask) {
-    res.status(200).json(findTask);
-  }
-});
+// router.get("/:catId", (req, res) => {
+//   const { catId } = req.params;
+//   const findTask = allCategories.filter((item) => {
+//     return item.id === catId;
+//   });
+//   if (findTask) {
+//     res.status(200).json(findTask);
+//   }
+// });
 
 // PUT - update category (working)
 router.put("/:catId", async (req, res) => {
   const { catId } = req.params;
 
+  let newId = allCategories.length + Math.floor(Math.random() * 258);
+
   const { id, category } = req.body;
 
-  const editCat = allCategories.find((item) => item.category === catId);
-  if (!editCat) return res.send("category does not exist");
+  const editTask = allCategories.find((item) => item.category === catId);
+  if (!editTask) return res.send("task does not exist");
 
   // check that val is present, if not use prev. if new val use new.
   const updatedField = (val, prev) => (!val ? prev : val);
 
-  const updatedCat = {
-    ...editCat,
-    id,
-    category: updatedField(category, editCat.category),
+  const updatedTask = {
+    ...editTask,
+    id: newId,
+    category: updatedField(category, editTask.category),
   };
 
-  const taskIndex = allCategories.findIndex((item) => item.id === catId);
-  allCategories.splice(taskIndex, 1, updatedCat);
-  res.send(updatedCat);
+  const taskIndex = allCategories.findIndex((item) => item.category === catId);
+  allCategories.splice(taskIndex, 1, updatedTask);
+  res.send(updatedTask);
 });
 
 // DELETE - delete categories (working)
