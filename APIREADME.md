@@ -73,5 +73,5 @@
 ## 9- DELETE CATEGORIES:
 - DELETE category: at line 90 in [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
     * Looks for category name given using array.find, if task is found the array.filter is used to remove the task from the main object array. Else, if task isn't found it will return an error message.
-        * EX: POSTMAN using "DELETE": in postman body, using raw, type any values to be updated/changed:
+        * EX: POSTMAN using "DELETE":
             - `https://localhost5000/categories/work`
