@@ -1,8 +1,13 @@
 # TODOS
-* [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
+* Located in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
 
 ## 1- GET TODOS:
-    - Getting and displaying every todo item in the original allTodos object array.
+- Use all todos: at line 15.
+     * Gets and displays every todo item in the original allTodos object array.
+
+- Use all todos by category: at line 21.
+     * Gets and displays every todo item associated with a specific category using array.filter.
+   
 
 ## 2- POST TODOS:
     - Creates/adds new todo task (unless it already exists).

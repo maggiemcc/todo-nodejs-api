@@ -12,13 +12,27 @@ let allCategories = [
   { id: 3, category: "health" },
 ];
 
-// GET - get all categories (works)
+// GET - get all categories
 router.get('/', (req, res) => {
     res.status(200).json(allCategories);
 });
 
 
-// POST - add new category (works)
+// Get - get tasks by ID (working)
+router.get('/:taskCat', (req, res) => {
+    let found = allTodos.find((item) => {
+        return item.id === parseInt(req.params.taskCat);
+      });
+    
+      if (found) {
+        res.status(200).json(found);
+      } else {
+        res.status(404).json('Task does not exist');
+      }
+});
+
+
+// POST - add new category (working)
 router.post('/', (req, res) => {
     const {
         id,
@@ -40,7 +54,7 @@ router.post('/', (req, res) => {
     res.send(newCat);
 });
 
-// GET - specific categories (works)
+// GET - specific categories (working)
 router.get('/:catId', (req, res) => {
     const { catId } = req.params;
     const findTask = allCategories.filter(item => {
@@ -51,7 +65,7 @@ router.get('/:catId', (req, res) => {
     } 
 });
 
-// PUT - update category (works)
+// PUT - update category (working)
 router.put('/:catId', async (req, res) => {
     const { catId } = req.params;
 
@@ -78,7 +92,7 @@ router.put('/:catId', async (req, res) => {
 
 });
 
-// DELETE - delete categories (works)
+// DELETE - delete categories (working)
 router.delete('/:catId', (req, res) => {
     const { catId } = req.params;
 

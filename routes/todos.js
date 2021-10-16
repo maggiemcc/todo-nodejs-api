@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
     res.status(200).json(allTodos);
 });
 
-// Get - get tasks by Category
+
+// Get - get tasks by Category (working)
 router.get('/:taskCat', (req, res) => {
     const { taskCat } = req.params;
     const findTask = allTodos.filter(item => {
@@ -25,14 +26,14 @@ router.get('/:taskCat', (req, res) => {
     });
     if (findTask) {
         res.status(200).json(findTask);
+    }
+    if (!findTask) {
+        res.status(404).json('No category/task found.');
     } 
-    // else {
-    //     res.sendStatus(404);
-    // }
 });
 
 
-// POST - add new task
+// POST - add new task (working)
 router.post('/', (req, res) => {
     let newId = allTodos.length + Math.floor(Math.random() * 258);
 
@@ -58,7 +59,7 @@ router.post('/', (req, res) => {
 
 });
 
-// PUT - update tasks (works!)
+// PUT - update tasks (working)
 router.put('/:taskId', async (req, res) => {
     const { taskId } = req.params;
 
@@ -90,7 +91,7 @@ router.put('/:taskId', async (req, res) => {
     res.send(updatedTask);
 });
 
-// DELETE - delete task (works)
+// DELETE - delete task (working)
 router.delete('/:taskId', (req, res) => {
     const { taskId } = req.params;
 
