@@ -2,21 +2,24 @@
 * Located in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
 
 ## 1- GET TODOS:
-- Use all todos: at line 15.
+- GET all todos: at line 15 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
      * Gets and displays every todo item in the original allTodos object array.
 
-- Use all todos by category: at line 21.
+- GET all todos by category: at line 20 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
      * Gets and displays every todo item associated with a specific category using array.filter.
    
 
 ## 2- POST TODOS:
-    - Creates/adds new todo task (unless it already exists).
+- POST/Add new todos: at line 34 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
+     * Creates a new task by taking user input for req.body and pushing it to the array if the task doesn't already exist based on array.find.
 
 ## 3- PUT TODOS:
-    - Updates/editing a current todo task given any change made be user. Any changes will be displayed, otherwise it will take the prev value if left empty/unchanged.
+- PUT/update todos: at line 54 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
+    * Updates/edits a current todo task and changes it's values based on user input usind array.find to find the task and array.splice to remove and replace it with updated task values. Any changes will be displayed, otherwise it will take the prev value if left empty/unchanged.
 
 ## 4- DELETE TODOS:
-    - Looks for given task name and then deletes that task
+- DELETE todos: at line 81 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
+    * Looks for task name given and then deletes that task. If task name isn't found it will return an error message.
 
 
 # CATEGORIES
