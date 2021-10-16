@@ -1,5 +1,5 @@
 # TODOS
-* [Import statements](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
+* [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
 
 ## 1- GET TODOS:
     - Getting and displaying every todo item in the original allTodos object array.
@@ -15,7 +15,7 @@
 
 
 # CATEGORIES
-* [Import statements](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
+* [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
 ## 5- GET ALL TODOS BY CATEGORY:
     - Gets and displays only todos assigned to a specific category.
 
