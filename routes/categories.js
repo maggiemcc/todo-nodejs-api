@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
   res.status(200).json(allCategories);
 });
 
-// Get - get tasks by name (working)
+// Get - get tasks by name
 router.get("/:taskCat", (req, res) => {
   const { taskCat } = req.params;
   const findTask = allCategories.filter((item) => {
@@ -33,7 +33,7 @@ router.get("/:taskCat", (req, res) => {
   }
 });
 
-// POST - add new category (working)
+// POST - add new category
 router.post("/", (req, res) => {
   const { id, category } = req.body;
 
@@ -51,18 +51,8 @@ router.post("/", (req, res) => {
   res.send(newCat);
 });
 
-// GET - specific categories (working)
-// router.get("/:catId", (req, res) => {
-//   const { catId } = req.params;
-//   const findTask = allCategories.filter((item) => {
-//     return item.id === catId;
-//   });
-//   if (findTask) {
-//     res.status(200).json(findTask);
-//   }
-// });
 
-// PUT - update category (working)
+// PUT - update category
 router.put("/:catId", async (req, res) => {
   const { catId } = req.params;
 
@@ -87,7 +77,7 @@ router.put("/:catId", async (req, res) => {
   res.send(updatedTask);
 });
 
-// DELETE - delete categories (working)
+// DELETE - delete categories
 router.delete("/:catId", (req, res) => {
   const { catId } = req.params;
 

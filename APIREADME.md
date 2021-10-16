@@ -65,13 +65,13 @@
             }
 
 ## 8- PUT CATEGORIES:
-- PUT/update todos: at line 65 in [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
+- PUT/update todos: at line 55 in [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
     * Updates/edits a current category info by changing it's values based on user input gathered by req.body and then using array.find to find the associated category and then use array.splice to remove the original and replace it with updated category values. Any changes will be displayed, otherwise it will take the prev value if left empty/unchanged.
         * EX: POSTMAN using "PUT": in postman body, using raw, type any values to be updated/changed:
             - `https://localhost5000/categories/work`, {"category": "for work"}
 
 ## 9- DELETE CATEGORIES:
-- DELETE category: at line 90 in [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
+- DELETE category: at line 80 in [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
     * Looks for category name given using array.find, if task is found the array.filter is used to remove the task from the main object array. Else, if task isn't found it will return an error message.
         * EX: POSTMAN using "DELETE":
             - `https://localhost5000/categories/work`
