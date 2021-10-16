@@ -4,14 +4,28 @@
 ## 1- GET TODOS:
 - GET all todos: at line 15 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
      * Gets and displays every todo item in the original allTodos object array.
+     * EX: POSTMAN using "GET":
+     - https://localhost5000/todos
 
 - GET all todos by category: at line 20 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
      * Gets and displays every todo item associated with a specific category using array.filter.
+     * EX: POSTMAN using "GET":
+     - https://localhost5000/todos/school
    
 
 ## 2- POST TODOS:
 - POST/Add new todos: at line 34 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)
      * Creates a new task by taking user input for req.body and pushing it to the object array if the task doesn't already exist based on array.find.
+     * EX: POSTMAN using "POST": in postman body, using raw, type na ew task to be added using POST:
+        - https://localhost5000/todos/
+        {
+            "id": 6,
+            "task": "sleep",
+            "category": "school",
+            "complete": false
+        }
+
+
 
 ## 3- PUT TODOS:
 - PUT/update todos: at line 54 in [Todos Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/todos.js)

@@ -37,14 +37,14 @@ router.post("/", (req, res) => {
 
   const { id, task, category, complete } = req.body;
 
-  const taskExists = allTodos.find((item) => item.id === id);
+  const taskExists = allTodos.find((item) => item.task === task);
   if (taskExists) return res.send("Task already exists.");
 
   const newTask = {
     id: newId,
     task,
     category,
-    complete,
+    complete: false
   };
 
   allTodos.push(newTask);
