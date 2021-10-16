@@ -1,9 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bodyParser = require('body-parser');
-router.use(bodyParser.urlencoded({
-    extended: true
-  }));
+const bodyParser = require("body-parser");
+router.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 router.use(bodyParser.json());
 
 let allCategories = [
@@ -13,95 +15,84 @@ let allCategories = [
 ];
 
 // GET - get all categories
-router.get('/', (req, res) => {
-    res.status(200).json(allCategories);
+router.get("/", (req, res) => {
+  res.status(200).json(allCategories);
 });
-
 
 // Get - get tasks by ID (working)
-router.get('/:taskCat', (req, res) => {
-    let found = allTodos.find((item) => {
-        return item.id === parseInt(req.params.taskCat);
-      });
-    
-      if (found) {
-        res.status(200).json(found);
-      } else {
-        res.status(404).json('Task does not exist');
-      }
+router.get("/:taskCat", (req, res) => {
+  let findTask = allCategories.find((item) => {
+    return item.id === parseInt(req.params.taskCat);
+  });
+
+  if (findTask) {
+    res.status(200).json(findTask);
+  } else {
+    res.status(404).json("Category does not exist");
+  }
 });
 
-
 // POST - add new category (working)
-router.post('/', (req, res) => {
-    const {
-        id,
-        category
-    } = req.body;
+router.post("/", (req, res) => {
+  const { id, category } = req.body;
 
-    const catExists = allCategories.find(item => item.category === category)
-    if(catExists) return res.send("Category already exists.");
+  const catExists = allCategories.find((item) => item.category === category);
+  if (catExists) return res.send("Category already exists.");
 
-    let newId = allCategories.length + Math.floor(Math.random() * 258);
+  let newId = allCategories.length + Math.floor(Math.random() * 258);
 
+  const newCat = {
+    id: newId,
+    category,
+  };
 
-    const newCat = {
-        id: newId,
-        category
-    };
-
-    allCategories.push(newCat);
-    res.send(newCat);
+  allCategories.push(newCat);
+  res.send(newCat);
 });
 
 // GET - specific categories (working)
-router.get('/:catId', (req, res) => {
-    const { catId } = req.params;
-    const findTask = allCategories.filter(item => {
-        return item.category === catId;
-    });
-    if (findTask) {
-        res.status(200).json(findTask);
-    } 
+router.get("/:catId", (req, res) => {
+  const { catId } = req.params;
+  const findTask = allCategories.filter((item) => {
+    return item.category === catId;
+  });
+  if (findTask) {
+    res.status(200).json(findTask);
+  }
 });
 
 // PUT - update category (working)
-router.put('/:catId', async (req, res) => {
-    const { catId } = req.params;
+router.put("/:catId", async (req, res) => {
+  const { catId } = req.params;
 
-    const {
-        id,
-        category,
-    } = req.body;
+  const { id, category } = req.body;
 
-    const editCat = allCategories.find(item => item.category === catId);
-    if(!editCat) return res.send("category does not exist");
+  const editCat = allCategories.find((item) => item.category === catId);
+  if (!editCat) return res.send("category does not exist");
 
-    // check that val is present, if not use prev. if new val use new.
-    const updatedField = (val, prev) => !val ? prev : val;
+  // check that val is present, if not use prev. if new val use new.
+  const updatedField = (val, prev) => (!val ? prev : val);
 
-    const updatedCat = {
-        ...editCat,
-        id,
-        category: updatedField(category, editCat.category),
-    }
+  const updatedCat = {
+    ...editCat,
+    id,
+    category: updatedField(category, editCat.category),
+  };
 
-    const taskIndex = allCategories.findIndex(item => item.id === catId);
-    allCategories.splice(taskIndex, 1, updatedCat);
-    res.send(updatedCat);
-
+  const taskIndex = allCategories.findIndex((item) => item.id === catId);
+  allCategories.splice(taskIndex, 1, updatedCat);
+  res.send(updatedCat);
 });
 
 // DELETE - delete categories (working)
-router.delete('/:catId', (req, res) => {
-    const { catId } = req.params;
+router.delete("/:catId", (req, res) => {
+  const { catId } = req.params;
 
-    let removeCat = allCategories.find(item => item.category === catId);
-    if(!removeCat) return res.status(404).send('Category does not exist.');
+  let removeCat = allCategories.find((item) => item.category === catId);
+  if (!removeCat) return res.status(404).send("Category does not exist.");
 
-    allCategories = allCategories.filter(item => item.category !== catId);
-    res.send('Success');
-    
+  allCategories = allCategories.filter((item) => item.category !== catId);
+  res.send("Success");
 });
 
 module.exports = router;
