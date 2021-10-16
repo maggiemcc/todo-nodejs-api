@@ -22,7 +22,7 @@
     * Looks for task name given using array.find, if task is found the array.filter is used to remove the task from the main object array. Else, if task isn't found it will return an error message.
 
 ## 5- GET ALL TODOS BY CATEGORY:
-    - Gets and displays only todos assigned to a specific category.
+- Gets and displays only todos assigned to a specific category.
 
 # CATEGORIES
 * [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
@@ -36,7 +36,6 @@
 
 
 ## 7- POST CATEGORIES:
-    - Creates/adds new category (unless it already exists).
 - POST/Add new todos: at line 35 in [Categories Route](https://github.com/maggiemcc/todo-nodejs-api/blob/master/routes/categories.js)
      * Creates a new category by taking user input for req.body and pushing it to the object array if the category doesn't already exist based on array.find.
 
